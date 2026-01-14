@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Học - TT601 K16</title>
+    <link rel="stylesheet" href="chinhsualenxuongvamau.css">
+</head>
+<body>
+    <!-- Header: Phần đầu trang với tiêu đề chính -->
+    <header class="header">
+        <h1>Lịch Học TT601 K16</h1>
+        <p class="subtitle">Quản lý thời khóa biểu học tập</p>
+    </header>
+
+    <!-- Main: Phần nội dung chính của trang -->
+    <main class="container">
+        
+        <!-- Section: Phần link truy cập Phan1 -->
+        <section class="phan1-section">
+            <h2>Truy Cập Lịch Học</h2>
+            <p>Click vào nút bên dưới để xem lịch học chi tiết:</p>
+            <a href="https://tkb.whitecat.cloud/?class=1" class="btn-link">
+                📅 Xem Lịch Học
+            </a>
+        </section>
+
+        <!-- Section: Chọn tuần học -->
+        <section class="week-selector-section">
+            <h2>Chọn Tuần Học</h2>
+            <div class="week-controls">
+                <!-- Nút quay lại tuần trước - icon mũi tên trái -->
+                <button class="btn-week" onclick="previousWeek()">⬅️ Tuần Trước</button>
+                
+                <!-- Dropdown chọn tuần -->
+                <select id="weekSelect" class="week-select" onchange="changeWeek()">
+                    <option value="24">Tuần 24 (Hiện tại)</option>
+                    <option value="25">Tuần 25</option>
+                    <option value="26">Tuần 26</option>
+                    <option value="27">Tuần 27</option>
+                    <option value="28">Tuần 28</option>
+                    <option value="29">Tuần 29</option>
+                    <option value="30">Tuần 30</option>
+                    <option value="31">Tuần 31</option>
+                    <option value="32">Tuần 32</option>
+                </select>
+                
+                <!-- Nút sang tuần tiếp theo - icon mũi tên phải -->
+                <button class="btn-week" onclick="nextWeek()">Tuần Sau ➡️</button>
+            </div>
+            <!-- Hiển thị tuần hiện tại -->
+            <p class="current-week">📚 Tuần học hiện tại: <strong id="currentWeekDisplay">24</strong></p>
+        </section>
+
+        <!-- Section: Bảng lịch học -->
+        <section class="schedule-section">
+            <h2>Lịch Học Tuần <span id="weekNumber">24</span></h2>
+            <!-- Bảng hiển thị theo cột dọc -->
+            <div class="schedule-grid" id="scheduleGrid">
+                <!-- Dữ liệu sẽ được điền bằng JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer: Phần cuối trang -->
+    <footer class="footer">
+        <p>&copy; 2026 TT601 K16</p>
+    </footer>
+
+    <!-- Script: JavaScript để quản lý lịch học theo tuần -->
+    <script>
+        /* Dữ liệu lịch học cho từng tuần - mỗi tuần 4 môn học */
+        const scheduleData = {
+            24: [ /* Tuần 24 - hiện tại */
+                { day: 'Thứ 2', subject: 'MD15. Thiết kế WEB (80 tiết)', teacher: 'Vũ Quốc Cường', room: 'P304-N1', time: 'Sáng' },
+                { day: 'Thứ 2', subject: 'MD16. Cấu trúc dữ liệu và Giải thuật (80 tiết)', teacher: 'Vũ Mạnh Hùng', room: '504-N1', time: 'Chiều' },
+                { day: 'Thứ 4', subject: 'MD20. Hệ quản trị Cơ sở dữ liệu (80 tiết)', teacher: 'Vũ Quốc Cường', room: '303-N1', time: 'Chiều' },
+                { day: 'Thứ 5', subject: 'MD14. Ứng dụng CNTT trực tuyến (62 tiết)', teacher: 'Lê Văn Tâm', room: '103-N4', time: 'Sáng' }
+            ],
+            25: [ /* Tuần 25 */
+                { day: 'Thứ 2', subject: 'MD15. Thiết kế WEB (80 tiết)', teacher: 'Vũ Quốc Cường', room: 'P304-N1', time: 'Sáng' },
+                { day: 'Thứ 2', subject: 'MD16. Cấu trúc dữ liệu và Giải thuật (80 tiết)', teacher: 'Vũ Mạnh Hùng', room: '504-N1', time: 'Chiều' },
+                { day: 'Thứ 4', subject: 'MD20. Hệ quản trị Cơ sở dữ liệu (80 tiết)', teacher: 'Vũ Quốc Cường', room: '303-N1', time: 'Chiều' },
+                { day: 'Thứ 5', subject: 'MD14. Ứng dụng CNTT trực tuyến (62 tiết)', teacher: 'Lê Văn Tâm', room: '103-N4', time: 'Sáng' }
+            ],
+            26: [ /* Tuần 26 */
+                { day: 'Thứ 2', subject: 'MD15. Thiết kế WEB (80 tiết)', teacher: 'Vũ Quốc Cường', room: 'P304-N1', time: 'Sáng' },
+                { day: 'Thứ 2', subject: 'MD16. Cấu trúc dữ liệu và Giải thuật (80 tiết)', teacher: 'Vũ Mạnh Hùng', room: '504-N1', time: 'Chiều' },
+                { day: 'Thứ 4', subject: 'MD20. Hệ quản trị Cơ sở dữ liệu (80 tiết)', teacher: 'Vũ Quốc Cường', room: '303-N1', time: 'Chiều' },
+                { day: 'Thứ 5', subject: 'MD14. Ứng dụng CNTT trực tuyến (62 tiết)', teacher: 'Lê Văn Tâm', room: '103-N4', time: 'Sáng' }
+            ],
+            27: [ /* Tuần 27 */
+                { day: 'Thứ 2', subject: 'MD15. Thiết kế WEB (80 tiết)', teacher: 'Vũ Quốc Cường', room: 'P304-N1', time: 'Sáng' },
+                { day: 'Thứ 2', subject: 'MD16. Cấu trúc dữ liệu và Giải thuật (80 tiết)', teacher: 'Vũ Mạnh Hùng', room: '504-N1', time: 'Chiều' },
+                { day: 'Thứ 4', subject: 'MD20. Hệ quản trị Cơ sở dữ liệu (80 tiết)', teacher: 'Vũ Quốc Cường', room: '303-N1', time: 'Chiều' },
+                { day: 'Thứ 5', subject: 'MD14. Ứng dụng CNTT trực tuyến (62 tiết)', teacher: 'Lê Văn Tâm', room: '103-N4', time: 'Sáng' }
+            ],
+            28: [ /* Tuần 28 */
+                { day: 'Thứ 2', subject: 'MD15. Thiết kế WEB (80 tiết)', teacher: 'Vũ Quốc Cường', room: 'P304-N1', time: 'Sáng' },
+                { day: 'Thứ 2', subject: 'MD16. Cấu trúc dữ liệu và Giải thuật (80 tiết)', teacher: 'Vũ Mạnh Hùng', room: '504-N1', time: 'Chiều' },
+                { day: 'Thứ 4', subject: 'MD20. Hệ quản trị Cơ sở dữ liệu (80 tiết)', teacher: 'Vũ Quốc Cường', room: '303-N1', time: 'Chiều' },
+                { day: 'Thứ 5', subject: 'MD14. Ứng dụng CNTT trực tuyến (62 tiết)', teacher: 'Lê Văn Tâm', room: '103-N4', time: 'Sáng' }
+            ],
+            29: [], 30: [], 31: [], 32: [] /* Các tuần khác chưa có dữ liệu */
+        };
+
+        /* Hàm hiển thị lịch học theo cột dọc */
+        function displaySchedule(week) {
+            const scheduleGrid = document.getElementById('scheduleGrid');
+            scheduleGrid.innerHTML = ''; /* Xóa dữ liệu cũ */
+            
+            const data = scheduleData[week] || [];
+            
+            if (data.length === 0) {
+                scheduleGrid.innerHTML = '<div class="no-data">Chưa có dữ liệu lịch học cho tuần này</div>';
+                return;
+            }
+            
+            /* Nhóm dữ liệu theo ngày học */
+            const groupedByDay = {};
+            data.forEach(item => {
+                if (!groupedByDay[item.day]) {
+                    groupedByDay[item.day] = [];
+                }
+                groupedByDay[item.day].push(item);
+            });
+            
+            /* Tạo cột cho mỗi ngày */
+            Object.keys(groupedByDay).forEach(day => {
+                const column = document.createElement('div');
+                column.className = 'schedule-column';
+                
+                /* Header cột - hiển thị ngày */
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'column-header';
+                dayHeader.textContent = day;
+                column.appendChild(dayHeader);
+                
+                /* Dữ liệu các môn học trong ngày */
+                groupedByDay[day].forEach(item => {
+                    const card = document.createElement('div');
+                    const timeClass = item.time === 'Sáng' ? 'card-sang' : 'card-chieu';
+                    card.className = `schedule-card ${timeClass}`;
+                    
+                    card.innerHTML = `
+                        <div class="card-subject">${item.subject}</div>
+                        <div class="card-teacher">${item.teacher}</div>
+                        <div class="card-room">${item.room}</div>
+                        <div class="card-time">${item.time}</div>
+                    `;
+                    column.appendChild(card);
+                });
+                
+                scheduleGrid.appendChild(column);
+            });
+        }
+
+        /* Hàm thay đổi tuần khi chọn từ dropdown */
+        function changeWeek() {
+            const week = document.getElementById('weekSelect').value;
+            displaySchedule(parseInt(week));
+            document.getElementById('weekNumber').textContent = week;
+            document.getElementById('currentWeekDisplay').textContent = week;
+        }
+
+        /* Hàm chuyển sang tuần trước */
+        function previousWeek() {
+            const weekSelect = document.getElementById('weekSelect');
+            let currentWeek = parseInt(weekSelect.value);
+            if (currentWeek > 24) {
+                currentWeek--;
+                weekSelect.value = currentWeek;
+                changeWeek();
+            }
+        }
+
+        /* Hàm chuyển sang tuần tiếp theo */
+        function nextWeek() {
+            const weekSelect = document.getElementById('weekSelect');
+            let currentWeek = parseInt(weekSelect.value);
+            if (currentWeek < 32) {
+                currentWeek++;
+                weekSelect.value = currentWeek;
+                changeWeek();
+            }
+        }
+
+        /* Tải lịch tuần 24 khi trang vừa mở */
+        window.onload = function() {
+            displaySchedule(24);
+        };
+    </script>
+
+</body>
+</html>
