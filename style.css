@@ -1,0 +1,458 @@
+/* Cài đặt mặc định cho toàn bộ trang */
+* {
+    margin: 0; /* Xóa margin mặc định */
+    padding: 0; /* Xóa padding mặc định */
+    box-sizing: border-box; /* Tính toán kích thước hộp chính xác */
+}
+
+body {
+    background: linear-gradient(135deg, #00ff91 0%, #764ba2 100%); /* Gradient màu tím đẹp */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font hiện đại */
+    line-height: 1.6; /* Tăng khoảng cách dòng */
+    color: #333; /* Màu text mặc định */
+    min-height: 100vh; /* Chiều cao tối thiểu = chiều cao viewport */
+    display: flex; /* Sử dụng flexbox */
+    flex-direction: column; /* Xếp chồng theo chiều dọc */
+}
+
+/* Header: Phần đầu trang */
+.header {
+    background-color: rgba(0, 0, 0, 0.3); /* Nền tối với độ trong suốt */
+    color: white; /* Text màu trắng */
+    padding: 40px 20px; /* Khoảng cách bên trong */
+    text-align: center; /* Căn giữa */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+}
+
+.header h1 {
+    font-size: 42px; /* Kích thước chữ lớn */
+    margin-bottom: 10px; /* Khoảng cách dưới */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng chữ */
+}
+
+.subtitle {
+    font-size: 18px; /* Chữ phụ nhỏ hơn */
+    color: #e0e0e0; /* Màu xám nhạt */
+}
+
+/* Container: Phần nội dung chính */
+.container {
+    flex: 1; /* Chiếm hết không gian trống */
+    max-width: 900px; /* Chiều rộng tối đa */
+    margin: 40px auto; /* Căn giữa */
+    padding: 0 20px; /* Khoảng cách bên */
+    width: 100%; /* Chiều rộng 100% */
+}
+
+/* Section: Phần link truy cập Phan1 */
+.phan1-section {
+    background-color: white; /* Nền trắng */
+    padding: 30px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo góc */
+    margin-bottom: 30px; /* Khoảng cách dưới */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Bóng đổ */
+    text-align: center; /* Căn giữa */
+}
+
+.phan1-section h2 {
+    color: #667eea; /* Màu tím */
+    margin-bottom: 15px; /* Khoảng cách dưới */
+    font-size: 28px; /* Kích thước chữ */
+}
+
+.phan1-section p {
+    color: #666; /* Màu xám */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+}
+
+/* Nút link đẹp mắt */
+.btn-link {
+    display: inline-block; /* Cho phép set chiều rộng/cao */
+    background-color: #667eea; /* Màu nền tím */
+    color: white; /* Text màu trắng */
+    padding: 15px 40px; /* Khoảng cách bên trong */
+    text-decoration: none; /* Xóa gạch chân */
+    border-radius: 8px; /* Bo góc */
+    font-size: 18px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    transition: all 0.3s ease; /* Hiệu ứng mượt */
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4); /* Bóng đổ */
+}
+
+.btn-link:hover {
+    background-color: #764ba2; /* Đổi màu khi di chuột vào */
+    transform: translateY(-2px); /* Nâng lên một chút */
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.6); /* Bóng lớn hơn */
+}
+
+/* Section: Bảng lịch học */
+.schedule-section {
+    background-color: white; /* Nền trắng */
+    padding: 30px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Bóng đổ */
+}
+
+.schedule-section h2 {
+    color: #667eea; /* Màu tím */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+    font-size: 28px; /* Kích thước chữ */
+}
+
+/* Bảng lịch học */
+.schedule-table {
+    width: 100%; /* Chiều rộng 100% */
+    border-collapse: collapse; /* Gộp border */
+    margin-top: 15px; /* Khoảng cách trên */
+}
+
+.schedule-table thead {
+    background-color: #667eea; /* Nền tím cho header */
+    color: white; /* Text trắng */
+}
+
+.schedule-table th {
+    padding: 15px; /* Khoảng cách bên trong */
+    text-align: left; /* Căn trái */
+    font-weight: bold; /* Chữ đậm */
+}
+
+.schedule-table td {
+    padding: 12px 15px; /* Khoảng cách bên trong */
+    border-bottom: 1px solid #e0e0e0; /* Đường viền dưới nhạt */
+}
+
+.schedule-table tbody tr:hover {
+    background-color: #f5f5f5; /* Nền xám nhạt khi di chuột */
+}
+
+/* Section: Chọn tuần học */
+.week-selector-section {
+    background-color: white; /* Nền trắng */
+    padding: 30px; /* Khoảng cách bên trong */
+    border-radius: 10px; /* Bo góc */
+    margin-bottom: 30px; /* Khoảng cách dưới */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Bóng đổ */
+    text-align: center; /* Căn giữa */
+}
+
+.week-selector-section h2 {
+    color: #667eea; /* Màu tím */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+    font-size: 28px; /* Kích thước chữ */
+}
+
+/* Phần điều khiển nút và dropdown */
+.week-controls {
+    display: flex; /* Sử dụng flexbox */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 15px; /* Khoảng cách giữa các phần tử */
+    margin-bottom: 20px; /* Khoảng cách dưới */
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+}
+
+/* Nút chuyển tuần (Trước/Sau) */
+.btn-week {
+    background-color: #667eea; /* Màu nền tím */
+    color: white; /* Text trắng */
+    border: none; /* Xóa border mặc định */
+    padding: 12px 24px; /* Khoảng cách bên trong */
+    border-radius: 8px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    cursor: pointer; /* Con trỏ chuột là tay */
+    transition: all 0.3s ease; /* Hiệu ứng mượt */
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.4); /* Bóng đổ */
+}
+
+.btn-week:hover {
+    background-color: #764ba2; /* Đổi màu khi di chuột vào */
+    transform: translateY(-2px); /* Nâng lên một chút */
+    box-shadow: 0 6px 12px rgba(102, 126, 234, 0.6); /* Bóng lớn hơn */
+}
+
+.btn-week:active {
+    transform: translateY(0); /* Trở lại vị trí ban đầu khi click */
+}
+
+/* Dropdown chọn tuần */
+.week-select {
+    padding: 12px 16px; /* Khoảng cách bên trong */
+    border: 2px solid #667eea; /* Đường viền tím */
+    border-radius: 8px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    color: #333; /* Màu text */
+    background-color: white; /* Nền trắng */
+    cursor: pointer; /* Con trỏ chuột là tay */
+    transition: all 0.3s ease; /* Hiệu ứng mượt */
+}
+
+.week-select:hover {
+    border-color: #764ba2; /* Đường viền đổi màu */
+    box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3); /* Bóng đổ */
+}
+
+.week-select:focus {
+    outline: none; /* Xóa outline mặc định */
+    border-color: #764ba2; /* Đường viền tím đậm */
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); /* Bóng glow */
+}
+
+/* Hiển thị tuần hiện tại */
+.current-week {
+    color: #666; /* Màu xám */
+    font-size: 16px; /* Kích thước chữ */
+    margin: 0; /* Xóa margin */
+}
+
+.current-week strong {
+    color: #667eea; /* Tuần số màu tím */
+    font-size: 20px; /* Chữ lớn hơn */
+}
+
+/* Hàng bảng - Học sáng (màu xanh) */
+.row-sang {
+    background-color: #e8f5e9; /* Nền xanh nhạt */
+}
+
+.row-sang:hover {
+    background-color: #c8e6c9; /* Nền xanh đậm hơn khi di chuột */
+}
+
+/* Hàng bảng - Học chiều (màu vàng) */
+.row-chieu {
+    background-color: #fff9e6; /* Nền vàng nhạt */
+}
+
+.row-chieu:hover {
+    background-color: #ffe0b2; /* Nền vàng đậm hơn khi di chuột */
+}
+
+/* Cell thời gian học */
+.time-sáng {
+    background-color: #4caf50; /* Nền xanh đậm */
+    color: white; /* Text trắng */
+    padding: 8px 12px; /* Khoảng cách bên trong */
+    border-radius: 6px; /* Bo góc */
+    font-weight: bold; /* Chữ đậm */
+}
+
+.time-chiều {
+    background-color: #ffc107; /* Nền vàng đậm */
+    color: #333; /* Text đen */
+    padding: 8px 12px; /* Khoảng cách bên trong */
+    border-radius: 6px; /* Bo góc */
+    font-weight: bold; /* Chữ đậm */
+}
+
+/* Thông báo không có dữ liệu */
+.no-data {
+    text-align: center; /* Căn giữa */
+    color: #999; /* Màu xám */
+    font-style: italic; /* Chữ nghiêng */
+    padding: 30px; /* Khoảng cách bên trong */
+}
+
+/* Grid layout - hiển thị theo cột dọc */
+.schedule-grid {
+    display: grid; /* Sử dụng CSS Grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cột tự động điều chỉnh */
+    gap: 20px; /* Khoảng cách giữa các cột */
+    margin-top: 20px; /* Khoảng cách trên */
+}
+
+/* Mỗi cột đại diện cho một ngày học */
+.schedule-column {
+    background-color: #f9f9f9; /* Nền xám nhạt */
+    border-radius: 12px; /* Bo góc */
+    overflow: hidden; /* Ẩn phần tử vượt ra ngoài */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+    transition: all 0.3s ease; /* Hiệu ứng mượt */
+}
+
+.schedule-column:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bóng lớn hơn khi di chuột */
+    transform: translateY(-4px); /* Nâng lên khi di chuột */
+}
+
+/* Header cột - hiển thị ngày học */
+.column-header {
+    background-color: #667eea; /* Nền tím */
+    color: white; /* Text trắng */
+    padding: 16px; /* Khoảng cách bên trong */
+    text-align: center; /* Căn giữa */
+    font-size: 18px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    text-transform: uppercase; /* Chữ hoa */
+    letter-spacing: 1px; /* Tăng khoảng cách chữ */
+}
+
+/* Card môn học */
+.schedule-card {
+    padding: 16px; /* Khoảng cách bên trong */
+    border-left: 5px solid #667eea; /* Viền trái tím */
+    margin: 12px; /* Khoảng cách bên ngoài */
+    border-radius: 8px; /* Bo góc */
+    background-color: white; /* Nền trắng */
+    transition: all 0.3s ease; /* Hiệu ứng mượt */
+}
+
+.schedule-card:hover {
+    transform: translateX(4px); /* Dịch sang phải khi di chuột */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+}
+
+/* Card - Học sáng (xanh) */
+.card-sang {
+    border-left-color: #4caf50; /* Viền trái xanh */
+    background-color: #e8f5e9; /* Nền xanh nhạt */
+}
+
+.card-sang .card-subject {
+    color: #2e7d32; /* Text xanh đậm */
+}
+
+.card-sang .card-time {
+    background-color: #4caf50; /* Nền xanh cho thời gian */
+}
+
+/* Card - Học chiều (vàng) */
+.card-chieu {
+    border-left-color: #ffc107; /* Viền trái vàng */
+    background-color: #fff9e6; /* Nền vàng nhạt */
+}
+
+.card-chieu .card-subject {
+    color: #f57f17; /* Text vàng đậm */
+}
+
+.card-chieu .card-time {
+    background-color: #ffc107; /* Nền vàng cho thời gian */
+}
+
+/* Tên môn học */
+.card-subject {
+    font-size: 15px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    margin-bottom: 10px; /* Khoảng cách dưới */
+    line-height: 1.4; /* Tăng khoảng cách dòng */
+}
+
+/* Tên giảng viên */
+.card-teacher {
+    font-size: 14px; /* Chữ nhỏ hơn */
+    color: #666; /* Màu xám */
+    margin-bottom: 8px; /* Khoảng cách dưới */
+}
+
+.card-teacher::before {
+    content: "👨‍🏫 "; /* Thêm icon giảng viên */
+}
+
+/* Phòng học */
+.card-room {
+    font-size: 14px; /* Chữ nhỏ hơn */
+    color: #666; /* Màu xám */
+    margin-bottom: 10px; /* Khoảng cách dưới */
+}
+
+.card-room::before {
+    content: "🏠 "; /* Thêm icon phòng */
+}
+
+/* Giờ học */
+.card-time {
+    display: inline-block; /* Hiển thị inline */
+    padding: 6px 12px; /* Khoảng cách bên trong */
+    border-radius: 6px; /* Bo góc */
+    color: white; /* Text trắng */
+    font-size: 13px; /* Chữ nhỏ */
+    font-weight: bold; /* Chữ đậm */
+    text-transform: uppercase; /* Chữ hoa */
+}
+
+/* Thông báo không có dữ liệu */
+.schedule-grid .no-data {
+    grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa */
+    padding: 60px 20px; /* Khoảng cách bên trong */
+    color: #999; /* Màu xám */
+    font-size: 16px; /* Kích thước chữ */
+    font-style: italic; /* Chữ nghiêng */
+}
+
+/* Responsive: Tối ưu cho màn hình nhỏ */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 28px; /* Chữ nhỏ hơn trên mobile */
+    }
+    
+    .container {
+        margin: 20px auto; /* Khoảng cách nhỏ hơn */
+    }
+    
+    .schedule-table th, .schedule-table td {
+        padding: 10px; /* Padding nhỏ hơn */
+        font-size: 14px; /* Chữ nhỏ hơn */
+    }
+    
+    .week-controls {
+        flex-direction: column; /* Xếp thẳng theo chiều dọc */
+        gap: 10px; /* Khoảng cách nhỏ hơn */
+    }
+    
+    .btn-week, .week-select {
+        width: 100%; /* Chiều rộng 100% */
+        font-size: 14px; /* Chữ nhỏ hơn */
+    }
+    
+    .week-selector-section h2 {
+        font-size: 22px; /* Chữ nhỏ hơn */
+    }
+}
+
+@media (max-width: 768px) {
+    .schedule-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Cột nhỏ hơn */
+        gap: 15px; /* Khoảng cách nhỏ hơn */
+    }
+    
+    .schedule-column {
+        border-radius: 10px; /* Bo góc nhỏ hơn */
+    }
+    
+    .column-header {
+        padding: 12px; /* Padding nhỏ hơn */
+        font-size: 16px; /* Chữ nhỏ hơn */
+    }
+    
+    .schedule-card {
+        padding: 12px; /* Padding nhỏ hơn */
+        margin: 10px; /* Margin nhỏ hơn */
+    }
+    
+    .card-subject {
+        font-size: 13px; /* Chữ nhỏ hơn */
+    }
+    
+    .card-teacher, .card-room {
+        font-size: 12px; /* Chữ nhỏ hơn */
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-grid {
+        grid-template-columns: 1fr; /* Một cột duy nhất trên mobile */
+        gap: 10px; /* Khoảng cách rất nhỏ */
+    }
+    
+    .schedule-section {
+        padding: 15px; /* Padding nhỏ hơn */
+    }
+    
+    .schedule-card {
+        padding: 10px; /* Padding rất nhỏ */
+        margin: 8px; /* Margin rất nhỏ */
+    }
+}
